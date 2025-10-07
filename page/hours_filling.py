@@ -54,7 +54,7 @@ def insert_hours(waarnemer,datum,project,opdracht,opmerking):
   data = {"waarnemer":waarnemer,"datum":datum,"project":project,"opdracht":opdracht,"opmerking":opmerking}
 
   response = (
-          supabase.table("ekotijd_df_hours")
+          supabase.table("ekotijd_hours")
           .insert(data)
           .execute()
       )
@@ -63,7 +63,7 @@ def insert_hours(waarnemer,datum,project,opdracht,opmerking):
 def delete_item(key):
   if st.button("Let op! Klik hier als je dit wilt verwijderen",icon="🚨",type="primary",use_container_width=True):
       response = (
-          supabase.table("ekotijd_df_hours")
+          supabase.table("ekotijd_hours")
           .delete()
           .eq("key", key)
           .execute()
