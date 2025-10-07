@@ -33,7 +33,7 @@ def init_connection():
     return create_client(url, key)
 
 supabase = init_connection()
-rows_users = supabase.table("df_users_ecotijd").select("*").execute()
+rows_users = supabase.table("ekotijd_users").select("*").execute()
 df_references = pd.DataFrame(rows_users.data)
 
 
