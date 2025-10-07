@@ -74,7 +74,7 @@ def delete_item(key):
 
 
 # --- APP ---
-IMAGE = "image/logo.png"
+IMAGE = "images/logo.png"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
