@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import geopandas as gpd
 import random
@@ -12,9 +11,7 @@ from datetime import datetime, timedelta, date
 import random
 
 import ast
-
 from supabase import create_client, Client
-
 
 from streamlit_cookies_controller import CookieController
 import time
