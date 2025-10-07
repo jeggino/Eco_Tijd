@@ -23,7 +23,7 @@ import time
 st.set_page_config(
     initial_sidebar_state="collapsed",
     layout="wide",
-    page_title="⌛ ECO Tijd",
+    page_title="⌛ EkO Tijd",
     
 )
 
