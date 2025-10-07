@@ -85,4 +85,4 @@ opmerking = None
 
 with st.form("my_form", clear_on_submit=True,border=True): 
     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
-        insert_hours(waarnemer,str(datum),project,opdracht,opmerking)
+        insert_hours(waarnemer,datum,project,opdracht,opmerking)
