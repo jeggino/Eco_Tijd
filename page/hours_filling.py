@@ -87,7 +87,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
     
   if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
 
-    datum  = st.date_input(label, value="today", min_value=None, max_value=None, key=None, help=None, on_change=None, args=None, kwargs=None, format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
+   
     project = None
     opdracht = None
     opmerking = None
