@@ -78,12 +78,11 @@ IMAGE = "Images/logo.png"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
-datum  = st.date_input("Datum", value="today", min_value=None, max_value=None, key=None, help=None, on_change=None, args=None, kwargs=None, format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
+datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
+project = None
+opdracht = None
+opmerking = None
 
 with st.form("my_form", clear_on_submit=True,border=True): 
-    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-        waarnemer = controller.get('name')
-        project = None
-        opdracht = None
-        opmerking = None
+    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
         insert_hours(waarnemer,str(datum),project,opdracht,opmerking)
