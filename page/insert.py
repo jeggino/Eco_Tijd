@@ -19,11 +19,6 @@ import time
 controller = CookieController()
 
 
-def logOut():
-    if st.button("logOut",use_container_width=True):
-        controller.remove("name")
-        st.rerun()
 
-
-
-logOut()
+controller.remove("name")
+st.rerun()
