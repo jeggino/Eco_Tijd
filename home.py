@@ -71,7 +71,8 @@ def logIn():
 #---APP---
 page_1 = st.Page("page/🧭_navigatie.py", title="Navigatie",icon=":material/explore:" )
 page_2 = st.Page("page/📊_dashboard.py", title="Dashboard",icon=":material/bar_chart:" )
-page_3 = st.Page("page/📊_dashboard.py", title="Dashboard",icon=":material/bar_chart:" )
+page_3 = st.Page("page/📊_dashboard_editor.py", title="Dashboard",icon=":material/bar_chart:" )
+page_4 = st.Page("page/insert.py", title="insert project",icon=":material/bar_chart:" )
 
 
 
@@ -93,9 +94,13 @@ if not user_id:
 if controller.get("type") == 'user':
 
   pg = st.navigation([page_1,page_2],position="top")
+
+elif controller.get("type") == 'editor':
+
+    pg = st.navigation([page_1,page_2,page_3,page_4],position="top")
     
 else:
-    pg = st.navigation([page_1,page_3],position="top")
+    pg = st.navigation([page_1,page_2,page_3],position="top")
 
 
 pg.run()
