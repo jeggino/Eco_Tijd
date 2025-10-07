@@ -21,4 +21,4 @@ controller = CookieController()
 
 
 controller.remove("name")
-st.rerun()
+st.switch_page("home.py")
