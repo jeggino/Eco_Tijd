@@ -86,8 +86,7 @@ datum  = st.date_input("Datum", value="today", min_value=None, max_value=None, k
 with st.form("my_form", clear_on_submit=True,border=True):
     
   if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-
-   
+    waarnemer = controller.get('name')
     project = None
     opdracht = None
     opmerking = None
