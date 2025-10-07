@@ -93,6 +93,4 @@ with st.form("my_form", clear_on_submit=True,border=True):
 
     
 
-  insert_hours(waarnemer,datum,project,opdracht,opmerking)
-    
-        # st.switch_page("page/🧭_navigatie.py")
+        insert_hours(waarnemer,datum,project,opdracht,opmerking)
