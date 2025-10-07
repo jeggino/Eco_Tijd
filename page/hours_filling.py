@@ -7,7 +7,6 @@ from datetime import datetime, timedelta, date
 from natsort import natsorted
 import altair as alt
 
-from credentials import *
 from supabase import create_client, Client
 from streamlit_option_menu import option_menu
 
