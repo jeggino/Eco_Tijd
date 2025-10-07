@@ -90,7 +90,4 @@ with st.form("my_form", clear_on_submit=True,border=True):
     project = None
     opdracht = None
     opmerking = None
-
-    
-
-        insert_hours(waarnemer,datum,project,opdracht,opmerking)
+    insert_hours(waarnemer,datum,project,opdracht,opmerking)
