@@ -91,7 +91,7 @@ if not user_id:
 
 if controller.get("type") == 'user':
 
-    pg = st.navigation([page_1,page_2],position="top")
+    pg = st.navigation([page_1,page_2,page_4],position="top")
 
 elif controller.get("type") == 'editor':
 
