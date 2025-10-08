@@ -91,7 +91,7 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
 
-selected = option_menu(None,["Formulier", 'Projecten'], icons=['bi-pen', 'bi-assignment'],orientation="horizontal",)
+selected = option_menu(None,["Formulier", 'Projecten'], icons=['bi-pen', 'bi-card-checklist'],orientation="horizontal",)
 
 if selected == "Formulier":
   with st.form("my_form", clear_on_submit=True,border=True): 
