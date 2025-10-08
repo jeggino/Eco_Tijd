@@ -108,7 +108,6 @@ elif selected == 'Projecten':
   # try:
   df = supabase.table("ekotijd_projects").select("*").execute()
   df = pd.DataFrame(df.data)      
-  df
 
 
 
@@ -120,10 +119,13 @@ elif selected == 'Projecten':
         "opdracht": "Opdracht",
         "level": "Niveau",
         "n_hours": "'Totaal vaste uren",
-        "hour_loon": "Uur loon (:euro:)",
+        "hour_loon": st.column_config.NumberColumn("'Uur loon", format="€ %d"),
 
       },
       hide_index=True,
+      key="data",
+      on_select="rerun",
+      selection_mode=["single-row"]
   )
 
   
