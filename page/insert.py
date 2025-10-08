@@ -112,7 +112,7 @@ elif selected == 'Projecten':
 
 
 
-  st.dataframe(
+  event = st.dataframe(
       df,
       column_order = ['project','opdracht','level','n_hours','hour_loon'],
       column_config={
@@ -128,6 +128,8 @@ elif selected == 'Projecten':
       on_select="rerun",
       selection_mode=["single-row"]
   )
+
+  event.selection
 
   
   # except:
