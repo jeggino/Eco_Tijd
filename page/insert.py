@@ -95,15 +95,8 @@ waarnemer = controller.get('name')
 with st.form("my_form", clear_on_submit=True,border=True): 
   project  = st.text_input('Project', value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
   opdracht = st.text_input('Opdracht', value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
-  level = st.selectbox("Niveau", ['Starter','Medior','Senior'], index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
-  kind_of_hours = st.radio('Soort projecturen', ['Vast', 'Niet vast'], index=0, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False, horizontal=False, captions=None, label_visibility="visible", width="content")
- 
-  if kind_of_hours == 'Vast':
-    n_hours = st.number_input('Totaal vaste uren', min_value=None, max_value=None, value=None, step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
-  
-  else:
-    n_hours = None
-    
+  level = st.selectbox("Niveau", ['Starter','Medior','Senior'], index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")  
+  n_hours = st.number_input('Totaal vaste uren', min_value=0, max_value=None, value='min', step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")    
   hour_loon = st.number_input('Uur loon', min_value=None, max_value=None, value=None, step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None,  placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
   
   if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
