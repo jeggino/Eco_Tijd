@@ -111,7 +111,6 @@ if project:
     level = st.selectbox("Niveau", level_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
 
     if level:
-      st.write(df[(df['project']==project)&(df['opdracht']==opdracht)&(df['level']==level)]['n_hours'].values)
       if df[(df['project']==project)&(df['opdracht']==opdracht)&(df['level']==level)]['n_hours'].values == 0:
         aantal_uren = st.number_input('Aantal uren', min_value=0, max_value=None, value='min', step=1, disabled=False, label_visibility="visible", icon=None, width="stretch")
       else: 
