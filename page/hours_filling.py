@@ -113,7 +113,7 @@ if project:
     if level:
       opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
       
-if st.button("**Gegevens opslaan**",use_container_width=True): 
-
-  insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
-  st.rerun()
+      if st.button("**Gegevens opslaan**",use_container_width=True): 
+      
+        insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
+        st.rerun()
