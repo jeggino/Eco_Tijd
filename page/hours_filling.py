@@ -97,11 +97,12 @@ IMAGE = "Images/logo.png"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
-datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
-project = st.selectbox("Project", project_options, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
-opdracht = st.selectbox("Opdracht", opdracht_options, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
-opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
+
 
 with st.form("my_form", clear_on_submit=True,border=True): 
-    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
-        insert_hours(waarnemer,str(datum),project,opdracht,opmerking)
+  datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
+  project = st.selectbox("Project", project_options, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+  opdracht = st.selectbox("Opdracht", opdracht_options, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+  opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
+  if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
+      insert_hours(waarnemer,str(datum),project,opdracht,opmerking)
