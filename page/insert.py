@@ -129,9 +129,7 @@ elif selected == 'Projecten':
       selection_mode=["single-row"]
   )
 
-  st.write(len(event.selection['rows']))
-  try:
+  if len(event.selection['rows']) !=
     if st.button("**Project wissen**",use_container_width=True):
       delete_item(df.loc[event.selection['rows'][0],'id'])
-  except:
-    st.stop()
+
