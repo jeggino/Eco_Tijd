@@ -17,6 +17,8 @@ import time
 
 
 controller = CookieController()
+supabase = init_connection()
+
 
 df = supabase.table("ekotijd_projects").select("*").execute()
 df = pd.DataFrame(df.data)                
