@@ -130,7 +130,8 @@ elif selected == 'Projecten':
   )
 
   if event.selection:
-    delete_item(df.loc[event.selection['rows'],'id')
+    # delete_item(df.loc[event.selection['rows'],'id')
+    st.write(df.loc[event.selection['rows'],'id')
 
   
   # except:
