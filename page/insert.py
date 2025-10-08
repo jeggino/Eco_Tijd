@@ -105,10 +105,9 @@ if selected == "Formulier":
         insert_project(project,opdracht,level,n_hours,hour_loon)
 
 elif selected == 'Data':
-    try:
-        df = supabase.table("df_dagverslagen").select("*").execute()
-        df = pd.DataFrame(df.data)                
-      
-    except:
-        st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
-                width=450)  
+  try:
+    df = supabase.table("ekotijd_projects").select("*").execute()
+    df = pd.DataFrame(df.data)                
+  
+  except:
+    st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',width=450)    
