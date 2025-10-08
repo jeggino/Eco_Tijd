@@ -91,13 +91,24 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
 
+selected = option_menu(None,["Formulier", 'Data'], icons=['bi-pen', 'bi-database'],orientation="horizontal",)
 
-with st.form("my_form", clear_on_submit=True,border=True): 
-  project  = st.text_input('Project', value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
-  opdracht = st.text_input('Opdracht', value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
-  level = st.selectbox("Niveau", ['Starter','Medior','Senior'], index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")  
-  n_hours = st.number_input('Totaal vaste uren', min_value=0, max_value=None, value='min', step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")    
-  hour_loon = st.number_input('Uur loon', min_value=None, max_value=None, value=None, step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None,  placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
-  
-  if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
-      insert_project(project,opdracht,level,n_hours,hour_loon)
+if selected == "Formulier":
+  with st.form("my_form", clear_on_submit=True,border=True): 
+    project  = st.text_input('Project', value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+    opdracht = st.text_input('Opdracht', value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+    level = st.selectbox("Niveau", ['Starter','Medior','Senior'], index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")  
+    n_hours = st.number_input('Totaal vaste uren', min_value=0, max_value=None, value='min', step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")    
+    hour_loon = st.number_input('Uur loon', min_value=None, max_value=None, value=None, step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None,  placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+    
+    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
+        insert_project(project,opdracht,level,n_hours,hour_loon)
+
+elif selected == 'Data':
+    try:
+        df = supabase.table("df_dagverslagen").select("*").execute()
+        df = pd.DataFrame(df.data)                
+      
+    except:
+        st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',
+                width=450)  
