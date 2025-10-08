@@ -112,7 +112,7 @@ elif selected == 'Projecten':
 
 
 
-  event = st.dataframe(
+  event = st.data_editor(
       df,
       column_order = ['project','opdracht','level','n_hours','hour_loon'],
       column_config={
