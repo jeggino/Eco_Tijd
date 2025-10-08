@@ -104,7 +104,7 @@ with st.form("my_form", clear_on_submit=True,border=True):
   else:
     n_hours = None
     
-  hour_loon = st.number_input(label, min_value=None, max_value=None, value=None, step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None,  placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+  hour_loon = st.number_input('Uur loon', min_value=None, max_value=None, value=None, step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None,  placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
   
   if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
       insert_project(project,opdracht,level,n_hours,hour_loon)
