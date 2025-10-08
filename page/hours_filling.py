@@ -18,6 +18,14 @@ import time
 
 controller = CookieController()
 
+df = supabase.table("ekotijd_projects").select("*").execute()
+df = pd.DataFrame(df.data)                
+
+#options
+project_options = df['project'].unique()
+opdracht_options = df['opdracht'].unique()
+
+
 
 st.markdown(
     """
@@ -79,7 +87,7 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
 datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
-project = None
+project = st.selectbox("Project", project_options, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
 opdracht = None
 opmerking = None
 
