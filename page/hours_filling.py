@@ -33,8 +33,7 @@ df = supabase.table("ekotijd_projects").select("*").execute()
 df = pd.DataFrame(df.data)                
 
 #options
-project_options = df['project'].unique()
-opdracht_options = df['opdracht'].unique()
+
 
 
 
@@ -100,10 +99,18 @@ waarnemer = controller.get('name')
 
 with st.form("my_form", clear_on_submit=True,border=True): 
   datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
+
+  project_options = df['project'].unique()
   project = st.selectbox("Project", project_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+
+  opdracht_options = df[df['project']==project]['opdracht'].unique()
   opdracht = st.selectbox("Opdracht", opdracht_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+
+  level_options = df[(df['project']==project)&(df['opdracht']==opdracht)]['level'].unique()
   level = st.selectbox("Niveau", ['Starter','Medior','Senior'], index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+  
   opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
+  
   if st.form_submit_button("**Gegevens opslaan**",use_container_width=True): 
     if project or opdracht or level == None:
       st.write('fiil the input, please')
