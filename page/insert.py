@@ -129,7 +129,8 @@ elif selected == 'Projecten':
       selection_mode=["single-row"]
   )
 
-  event.selection
+  if event.selection:
+    delete_item(df.loc[event.selection['rows'],'id')
 
   
   # except:
