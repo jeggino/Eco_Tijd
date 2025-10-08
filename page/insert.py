@@ -130,11 +130,7 @@ elif selected == 'Projecten':
   )
 
   try:
-    delete_item(df.loc[event.selection['rows'][0],'id'])
+    if st.button("**Project wissen**",use_container_width=True):
+      delete_item(df.loc[event.selection['rows'][0],'id'])
   except:
     st.stop()
-
-
-  
-  # except:
-  #   st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',width=450)    
