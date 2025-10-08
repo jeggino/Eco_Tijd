@@ -114,12 +114,13 @@ elif selected == 'Projecten':
 
   st.dataframe(
       df,
+      column_order = ['project','opdracht','level','n_hours','hour_loon'],
       column_config={
         "project": "Project",
         "opdracht": "Opdracht",
         "level": "Niveau",
-        "n_hours": "'Totaal vaste uren",
-        "hour_loon": st.column_config.NumberColumn("'Uur loon", format="€ %d"),
+        "n_hours": "Totaal vaste uren",
+        "hour_loon": st.column_config.NumberColumn("Uur loon", format="€ %d"),
 
       },
       hide_index=True,
