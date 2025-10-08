@@ -97,25 +97,23 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
 
-with st.form("my_form", clear_on_submit=True,border=True): 
-  datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
+datum  = st.date_input("Datum", value="today", format="YYYY/MM/DD", disabled=False, label_visibility="visible", width="stretch")
 
-  project_options = df['project'].unique()
-  project = st.selectbox("Project", project_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
-  if project:
-    opdracht_options = df[df['project']==project]['opdracht'].unique()
-    opdracht = st.selectbox("Opdracht", opdracht_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+project_options = df['project'].unique()
+project = st.selectbox("Project", project_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
 
-    if opdracht:
-      level_options = df[(df['project']==project)&(df['opdracht']==opdracht)]['level'].unique()
-      level = st.selectbox("Niveau", level_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+if project:
+  opdracht_options = df[df['project']==project]['opdracht'].unique()
+  opdracht = st.selectbox("Opdracht", opdracht_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
 
-      if level:
-        opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
-        
-  if st.form_submit_button("**Gegevens opslaan**",use_container_width=True): 
-    if project or opdracht or level == None:
-      st.write('fill the input, please')
-      st.stop()
-    else:
-      insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
+  if opdracht:
+    level_options = df[(df['project']==project)&(df['opdracht']==opdracht)]['level'].unique()
+    level = st.selectbox("Niveau", level_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
+
+    if level:
+      opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
+      
+if st.button("**Gegevens opslaan**",use_container_width=True): 
+
+  insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
+  st.rerun()
