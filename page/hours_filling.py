@@ -67,9 +67,9 @@ supabase = init_connection()
 
 
 # --- FUNCTIONS ---
-def insert_hours(waarnemer,datum,project,opdracht,level,opmerking):
+def insert_hours(waarnemer,datum,project,opdracht,level,aantal_uren,opmerking):
     
-  data = {"waarnemer":waarnemer,"datum":datum,"project":project,"opdracht":opdracht,"level":level,"opmerking":opmerking}
+  data = {"waarnemer":waarnemer,"datum":datum,"project":project,"opdracht":opdracht,"level":level,"aantal_uren":aantal_uren,"opmerking":opmerking}
 
   response = (
           supabase.table("ekotijd_hours")
@@ -111,9 +111,13 @@ if project:
     level = st.selectbox("Niveau", level_options, index=None, disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")
 
     if level:
+      if df[(df['project']==project)&(df['opdracht']==opdracht)&(df['level']==opdracht)]['n_hours'] == 0:
+        aantal_uren = st.number_input('Aantal uren', min_value=0, max_value=None, value='min', step=1, disabled=False, label_visibility="visible", icon=None, width="stretch")
+      else: 
+        aantal_uren = df[(df['project']==project)&(df['opdracht']==opdracht)&(df['level']==opdracht)]['n_hours']
+                
       opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
       
-      if st.button("**Gegevens opslaan**",use_container_width=True): 
-      
-        insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
+      if st.button("**Gegevens opslaan**",use_container_width=True):       
+        insert_hours(waarnemer,str(datum),project,opdracht,level,aantal_uren,opmerking)
         st.rerun()
