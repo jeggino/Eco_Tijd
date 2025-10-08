@@ -115,6 +115,8 @@ if project:
         aantal_uren = st.number_input('Aantal uren', min_value=0, max_value=None, value='min', step=1, disabled=False, label_visibility="visible", icon=None, width="stretch")
       else: 
         aantal_uren = df[(df['project']==project)&(df['opdracht']==opdracht)&(df['level']==level)]['n_hours'].values
+
+      st.write(aantal_uren)
                 
       opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
       
