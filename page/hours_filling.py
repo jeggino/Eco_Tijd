@@ -16,6 +16,15 @@ from streamlit_cookies_controller import CookieController
 import time
 
 
+
+def init_connection():
+  url = st.secrets["SUPABASE_URL"]
+  key = st.secrets["SUPABASE_KEY"]
+  return create_client(url, key)
+
+
+
+
 controller = CookieController()
 supabase = init_connection()
 
