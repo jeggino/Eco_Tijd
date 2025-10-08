@@ -82,6 +82,27 @@ def delete_item(id):
           )
       st.rerun()
 
+@st.dialog(" ")
+def update_item(id,project_id,opdracht_id,level_id,n_hours_id,hour_loon_id):
+
+  project  = st.text_input('Project', value=project_id, max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+  opdracht = st.text_input('Opdracht', value=opdracht_id, max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+  level = st.selectbox("Niveau", ['Starter','Medior','Senior'], index=['Starter','Medior','Senior'].index(level_id), disabled=False, label_visibility="visible", accept_new_options=False, width="stretch")  
+  n_hours = st.number_input('Totaal vaste uren', min_value=0, max_value=None, value=n_hours_id, step=1, format=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")    
+  hour_loon = st.number_input('Uur loon', min_value=None, max_value=None, value=hour_loon_id, step=None, format=None, key=None, help=None, on_change=None, args=None, kwargs=None,  placeholder=None, disabled=False, label_visibility="visible", icon=None, width="stretch")
+
+  if st.button("**Update**", type="primary",use_container_width=True):
+      data = {"project":project,"opdracht":opdracht,"level":level,"n_hours":n_hours,'hour_loon':hour_loon}
+      response = (
+          supabase.table("ekotijd_projects")
+          .update(data)
+          .eq("id", id)
+          .execute()
+          )
+      
+      st.rerun()
+
+
 
 
 
@@ -130,6 +151,17 @@ elif selected == 'Projecten':
   )
 
   if len(event.selection['rows']) != 0:
+    if st.button("Project bijwerken",use_container_width=True):
+      id = df.loc[event.selection['rows'][0],'id']
+      project_id = df.loc[event.selection['rows'][0],'project']
+      opdracht_id = df.loc[event.selection['rows'][0],'opdracht']
+      level_id = df.loc[event.selection['rows'][0],'level']
+      n_hours_id = df.loc[event.selection['rows'][0],'n_hours']
+      hour_loon_id = df.loc[event.selection['rows'][0],'hour_loon']
+
+      update_item(id,project_id,opdracht_id,level_id,n_hours_id,hour_loon_id)
+      
+      
     if st.button(":red[**Project wissen**]",use_container_width=True):
       delete_item(df.loc[event.selection['rows'][0],'id'])
 
