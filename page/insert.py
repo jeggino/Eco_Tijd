@@ -110,6 +110,22 @@ elif selected == 'Projecten':
   df = pd.DataFrame(df.data)      
   df
 
+
+
+
+  st.dataframe(
+      df,
+      column_config={
+        "project": "Project",
+        "opdracht": "Opdracht",
+        "level": "Niveau",
+        "n_hours": "'Totaal vaste uren",
+        "hour_loon": "Uur loon (:euro:)",
+
+      },
+      hide_index=True,
+  )
+
   
   # except:
   #   st.image('https://t4.ftcdn.net/jpg/04/72/65/73/360_F_472657366_6kV9ztFQ3OkIuBCkjjL8qPmqnuagktXU.jpg',width=450)    
