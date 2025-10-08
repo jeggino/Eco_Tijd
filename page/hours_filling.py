@@ -113,9 +113,9 @@ with st.form("my_form", clear_on_submit=True,border=True):
       if level:
         opmerking = st.text_area("Opmerking", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible", width="stretch")
         
-        if st.form_submit_button("**Gegevens opslaan**",use_container_width=True): 
-          if project or opdracht or level == None:
-            st.write('fiil the input, please')
-            st.stop()
-          else:
-            insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
+  if st.form_submit_button("**Gegevens opslaan**",use_container_width=True): 
+    if project or opdracht or level == None:
+      st.write('fill the input, please')
+      st.stop()
+    else:
+      insert_hours(waarnemer,str(datum),project,opdracht,level,opmerking)
