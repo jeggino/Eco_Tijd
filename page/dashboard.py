@@ -53,7 +53,7 @@ IMAGE = "Images/logo.png"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 @st.cache_resource
-def get_data():
+def get_data(persist=True):
     df = supabase.table("ekotijd_hours").select("*").execute()
     df = pd.DataFrame(df.data)                
     df = df[(df['waarnemer']==waarnemer)]
