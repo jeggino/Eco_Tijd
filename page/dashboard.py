@@ -19,7 +19,7 @@ import time
 controller = CookieController()
 waarnemer = controller.get('name')
 
-IMAGE = "Images/logo.png"
+# IMAGE = "Images/logo.png"
 
 
 st.markdown(
@@ -60,7 +60,7 @@ def get_data(waarnemer):
 
 # --- APP ---
 
-st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
+# st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 
 
