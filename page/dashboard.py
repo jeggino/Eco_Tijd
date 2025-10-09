@@ -17,7 +17,7 @@ import time
 
 
 controller = CookieController()
-supabase = init_connection()
+
 
 waarnemer = controller.get('name')
 
@@ -50,12 +50,14 @@ def init_connection():
   key = st.secrets["SUPABASE_KEY"]
   return create_client(url, key)
 
+supabase = init_connection()
 
-# def get_data():
-#     df = supabase.table("ekotijd_hours").select("*").execute()
-#     df = pd.DataFrame(df.data)                
-#     df = df[(df['waarnemer']==waarnemer)]
-#     return df
+@st.cache_data(persist="disk")
+def get_data():
+    df = supabase.table("ekotijd_hours").select("*").execute()
+    df = pd.DataFrame(df.data)                
+    df = df[(df['waarnemer']==waarnemer)]
+    return df
 
 # --- APP ---
 
@@ -69,4 +71,4 @@ selection = st.segmented_control(
 )
 
 
-# get_data()
+get_data()
