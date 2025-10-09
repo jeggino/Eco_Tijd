@@ -49,11 +49,11 @@ def init_connection():
   return create_client(url, key)
 
 
-def get_data():
-    df = supabase.table("ekotijd_hours").select("*").execute()
-    df = pd.DataFrame(df.data)                
-    df = df[(df['waarnemer']==waarnemer)]
-    return df
+# def get_data():
+#     df = supabase.table("ekotijd_hours").select("*").execute()
+#     df = pd.DataFrame(df.data)                
+#     df = df[(df['waarnemer']==waarnemer)]
+#     return df
 
 # --- APP ---
 
@@ -67,4 +67,4 @@ selection = st.segmented_control(
 )
 
 
-get_data()
+# get_data()
