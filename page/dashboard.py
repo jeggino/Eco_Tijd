@@ -48,7 +48,7 @@ def init_connection():
   key = st.secrets["SUPABASE_KEY"]
   return create_client(url, key)
 
-@st.cache_resource(persist=True)
+@st.cache_data(persist="disk")
 def get_data():
     df = supabase.table("ekotijd_hours").select("*").execute()
     df = pd.DataFrame(df.data)                
