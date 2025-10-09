@@ -19,7 +19,6 @@ import time
 controller = CookieController()
 waarnemer = controller.get('name')
 
-# IMAGE = "Images/logo.png"
 
 
 st.markdown(
@@ -60,14 +59,7 @@ def get_data(waarnemer):
 
 # --- APP ---
 
-# st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
-
-
-options = ["North", "East", "South", "West"]
-selection = st.segmented_control(
-    "Directions", options, selection_mode="single"
-)
 
 
 df = get_data(waarnemer)
