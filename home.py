@@ -68,7 +68,7 @@ def logIn():
 page_1 = st.Page("page/hours_filling.py", title="Uren invullen",icon=":material/timer:" )
 page_2 = st.Page("page/dashboard.py", title="Dashboard",icon=":material/bar_chart:" )
 page_3 = st.Page("page/dashboard_editor.py", title="Dashboard (algemeen)",icon=":material/bar_chart:" )
-page_4 = st.Page("page/insert.py", title="Project uploaden",icon=":material/upload:" )
+page_4 = st.Page("page/insert.py", title="Talen uploaden",icon=":material/upload:" )
 
 
 
