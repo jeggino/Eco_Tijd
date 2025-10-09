@@ -112,7 +112,7 @@ st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 waarnemer = controller.get('name')
 
-selected = option_menu(None,["Formulier", 'Projecten'], icons=['bi-pen', 'bi-card-checklist'],orientation="horizontal",)
+selected = option_menu(None,["Formulier", 'Taken'], icons=['bi-pen', 'bi-card-checklist'],orientation="horizontal",)
 
 if selected == "Formulier":
   with st.form("my_form", clear_on_submit=True,border=True): 
@@ -125,7 +125,7 @@ if selected == "Formulier":
     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):    
         insert_project(project,opdracht,level,n_hours,hour_loon)
 
-elif selected == 'Projecten':
+elif selected == 'Taken':
   # try:
   df = supabase.table("ekotijd_projects").select("*").execute()
   df = pd.DataFrame(df.data)      
@@ -151,7 +151,7 @@ elif selected == 'Projecten':
   )
 
   if len(event.selection['rows']) != 0:
-    if st.button("Project bijwerken",use_container_width=True):
+    if st.button("Taken bijwerken",use_container_width=True):
       id = df.loc[event.selection['rows'][0],'id']
       project_id = df.loc[event.selection['rows'][0],'project']
       opdracht_id = df.loc[event.selection['rows'][0],'opdracht']
@@ -162,6 +162,6 @@ elif selected == 'Projecten':
       update_item(id,project_id,opdracht_id,level_id,n_hours_id,hour_loon_id)
       
       
-    if st.button(":red[**Project wissen**]",use_container_width=True):
+    if st.button(":red[**Taken verwijder**]",use_container_width=True):
       delete_item(df.loc[event.selection['rows'][0],'id'])
 
