@@ -17,6 +17,9 @@ import time
 
 
 controller = CookieController()
+supabase = init_connection()
+waarnemer = controller.get('name')
+IMAGE = "Images/logo.png"
 
 
 st.markdown(
@@ -45,22 +48,23 @@ def init_connection():
   key = st.secrets["SUPABASE_KEY"]
   return create_client(url, key)
 
-supabase = init_connection()
-waarnemer = controller.get('name')
-
-# --- APP ---
-IMAGE = "Images/logo.png"
-st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
-
-@st.cache_resource
-def get_data(persist=True):
+@st.cache_resource(persist=True)
+def get_data():
     df = supabase.table("ekotijd_hours").select("*").execute()
     df = pd.DataFrame(df.data)                
     df = df[(df['waarnemer']==waarnemer)]
     return df
 
+# --- APP ---
+
+st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
+
+
+
 options = ["North", "East", "South", "West"]
 selection = st.segmented_control(
     "Directions", options, selection_mode="single"
 )
+
+
 get_data()
