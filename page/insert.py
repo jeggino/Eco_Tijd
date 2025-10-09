@@ -151,7 +151,7 @@ elif selected == 'Taken':
   )
 
   if len(event.selection['rows']) != 0:
-    if st.button("Taken bijwerken",use_container_width=True):
+    if st.button("Taak bijwerken",use_container_width=True):
       id = df.loc[event.selection['rows'][0],'id']
       project_id = df.loc[event.selection['rows'][0],'project']
       opdracht_id = df.loc[event.selection['rows'][0],'opdracht']
@@ -162,6 +162,6 @@ elif selected == 'Taken':
       update_item(id,project_id,opdracht_id,level_id,n_hours_id,hour_loon_id)
       
       
-    if st.button(":red[**Taken verwijder**]",use_container_width=True):
+    if st.button(":red[**Taak verwijder**]",use_container_width=True):
       delete_item(df.loc[event.selection['rows'][0],'id'])
 
