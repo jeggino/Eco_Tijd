@@ -52,7 +52,7 @@ waarnemer = controller.get('name')
 IMAGE = "Images/logo.png"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
-@st.cache_resource():
+@st.cache_resource
 def get_data():
     df = supabase.table("ekotijd_hours").select("*").execute()
     df = pd.DataFrame(df.data)                
