@@ -73,8 +73,8 @@ page_4 = st.Page("page/insert.py", title="Project uploaden",icon=":material/uplo
 
 
 #---APP---
-IMAGE = "Images/logo.png"
-st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
+# IMAGE = "Images/logo.png"
+# st.logo(IMAGE,  link=None, size="large",icon_image=IMAGE)
 
 user_id = controller.get("name")
 
