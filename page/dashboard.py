@@ -53,7 +53,7 @@ def init_connection():
 
 supabase = init_connection()
 
-@st.cache_data(persist="disk")
+# @st.cache_data(persist="disk")
 def get_data(waarnemer):
     df = supabase.table("ekotijd_hours").select("*").execute()
     df = pd.DataFrame(df.data)                
