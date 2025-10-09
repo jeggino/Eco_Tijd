@@ -53,7 +53,7 @@ def init_connection():
 supabase = init_connection()
 
 @st.cache_data(persist="disk")
-def get_data():
+def get_data(waarnemer):
     df = supabase.table("ekotijd_hours").select("*").execute()
     df = pd.DataFrame(df.data)                
     df = df[(df['waarnemer']==waarnemer)]
@@ -71,4 +71,4 @@ selection = st.segmented_control(
 )
 
 
-get_data()
+get_data(waarnemer)
