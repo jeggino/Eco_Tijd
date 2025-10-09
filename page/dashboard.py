@@ -52,12 +52,15 @@ waarnemer = controller.get('name')
 IMAGE = "Images/logo.png"
 st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
-df = supabase.table("ekotijd_hours").select("*").execute()
-df = pd.DataFrame(df.data)                
-df = df[(df['waarnemer']==waarnemer)]
-df
+@st.cache_resource():
+def get_data():
+    df = supabase.table("ekotijd_hours").select("*").execute()
+    df = pd.DataFrame(df.data)                
+    df = df[(df['waarnemer']==waarnemer)]
+    return df
 
 options = ["North", "East", "South", "West"]
 selection = st.segmented_control(
     "Directions", options, selection_mode="single"
 )
+get_data()
