@@ -21,7 +21,7 @@ supabase = init_connection()
 
 waarnemer = controller.get('name')
 
-IMAGE = "Images/logo.png"
+# IMAGE = "Images/logo.png"
 
 
 st.markdown(
@@ -59,7 +59,7 @@ def init_connection():
 
 # --- APP ---
 
-st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
+# st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
 
 
 
