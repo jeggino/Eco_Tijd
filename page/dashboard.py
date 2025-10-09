@@ -72,4 +72,7 @@ selection = st.segmented_control(
 )
 
 
-get_data(waarnemer)
+df = get_data(waarnemer)
+
+df
+
