@@ -45,6 +45,7 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
+@st.cache_resource
 def init_connection():
   url = st.secrets["SUPABASE_URL"]
   key = st.secrets["SUPABASE_KEY"]
