@@ -18,6 +18,7 @@ import time
 
 controller = CookieController()
 supabase = init_connection()
+
 waarnemer = controller.get('name')
 
 IMAGE = "Images/logo.png"
