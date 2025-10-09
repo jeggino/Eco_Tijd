@@ -107,8 +107,7 @@ def update_item(id,project_id,opdracht_id,level_id,n_hours_id,hour_loon_id):
 
 
 # --- APP ---
-IMAGE = "Images/logo.png"
-st.logo(IMAGE,  link=None, size="large", icon_image=IMAGE)
+
 
 waarnemer = controller.get('name')
 
