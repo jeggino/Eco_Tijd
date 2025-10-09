@@ -56,3 +56,8 @@ df = supabase.table("ekotijd_hours").select("*").execute()
 df = pd.DataFrame(df.data)                
 df = df[(df['waarnemer']==waarnemer)]
 df
+
+options = ["North", "East", "South", "West"]
+selection = st.segmented_control(
+    "Directions", options, selection_mode="single"
+)
